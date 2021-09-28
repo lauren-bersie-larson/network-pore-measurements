@@ -20,6 +20,24 @@
 %%% Real-Time Collision Detection (pp. 125–233). San Francisco: Morgan Kaufmann. 
 %%% https://doi.org/https://doi.org/10.1016/B978-1-55860-732-3.50010-3
 
+%%% INPUTS: 
+%%% Nodes= Nx3 matrix of the X,Y,Z coordinates of the nodes(pts) in network
+%%% Fibers = MX2 matrix of the fibers in the network. The two entries
+%%% correspond to the two nodes that comprise the fiber
+%%% x = the dimension of the network, in meters. To input 20 micron, use 20e-6, etc. 
+%%% fiber_rad = radius of the fibers, in meters.
+%%% Threshold = the pore size you are using, in meters. 
+%%% Direction = Either 1, 2, or 3, corresponding to X, Y, or Z,
+%%% respectively. 
+
+%%% OUTPUTS:
+%%% Avg_dist = the averaged pore size of the network. A scalar value, in meters.
+%%% Min_size = the minimum pore size of the network. A scalar value, in meters.
+%%% Max_size = the maximum pore size of the network. A scalar value, in meters.
+%%% Pores = A 50,000 X 4 matrix, containing the X,Y,Z coordinates of the center 
+%%% of the sphere representing each pore (first 3 columns), along with the 
+%%% radius of each pore in meters (4th column). 
+
 function [avg_pore_size, min_size, max_size, pores] = calc_pore_size(nodes, fibers, x, fiber_rad)
 tic
 % Step 1: Find network properties
